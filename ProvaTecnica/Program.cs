@@ -3,8 +3,8 @@ using ProvaTecnica.Dependencies;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.InjecaoDeDependencias(builder.Configuration);       // // /
-builder.Services.AddCors();   // // /
+builder.Services.InjecaoDeDependencias(builder.Configuration);
+builder.Services.AddCors();
 
 
 // Add services to the container.
@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(c =>    // // /
+app.UseCors(c =>
 {
     c.AllowAnyHeader();
     c.AllowAnyMethod();

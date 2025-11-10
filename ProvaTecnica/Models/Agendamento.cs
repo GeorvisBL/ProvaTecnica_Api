@@ -4,12 +4,13 @@
     {
         public int Id { get; set; }
         public int SalaId { get; set; }
-        public string DataAgendamento { get; set; }
-        public string HoraInicioAgendamento { get; set; }
-        public string HoraFimAgendamento { get; set; }
-        public byte Cafe { get; set; }
+        public DateOnly DataAgendamento { get; set; }
+        public TimeOnly HoraInicio { get; set; }
+        public TimeOnly HoraFim { get; set; }
+        public bool Cafe { get; set; }
         public int CafeQuantidade { get; set; }
-        public string CafeDescrição { get; set; }
+        public string CafeDescricao { get; set; }
+        public string Responsavel { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataAtualizacao { get; set; }
 
