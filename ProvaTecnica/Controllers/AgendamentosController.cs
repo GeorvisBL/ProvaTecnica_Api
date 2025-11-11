@@ -4,7 +4,7 @@ using ProvaTecnica.Services.Interfaces;
 
 namespace ProvaTecnica.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/agendamentos")]
     [ApiController]
     public class AgendamentosController : ControllerBase
     {

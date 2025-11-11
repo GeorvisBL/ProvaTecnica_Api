@@ -23,6 +23,7 @@ namespace ProvaTecnica.Repositories.Repository
                 {
                     Id = a.Id,
                     SalaId = a.SalaId,
+                    SalaNome = a.Sala.Nome,
                     DataAgendamento = a.DataAgendamento.ToString("dd/MM/yyyy"),
                     HoraInicio = a.HoraInicio.ToString("HH:mm"),
                     HoraFim = a.HoraFim.ToString("HH:mm"),
@@ -46,6 +47,7 @@ namespace ProvaTecnica.Repositories.Repository
                 {
                     Id = a.Id,
                     SalaId = a.SalaId,
+                    SalaNome = a.Sala.Nome,
                     DataAgendamento = a.DataAgendamento.ToString("dd/MM/yyyy"),
                     HoraInicio = a.HoraInicio.ToString("HH:mm"),
                     HoraFim = a.HoraFim.ToString("HH:mm"),

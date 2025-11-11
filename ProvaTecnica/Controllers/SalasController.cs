@@ -4,7 +4,7 @@ using ProvaTecnica.Services.Interfaces;
 
 namespace ProvaTecnica.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/salas")]
     [ApiController]
     public class SalasController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace ProvaTecnica.Controllers
 
 
 
-        [HttpGet("listaSalas")]
+        [HttpGet("lista-salas")]
         public async Task<IActionResult> BuscarSalas()
         {
             var retornoSalas = await _salaServices.GetListaSalas();

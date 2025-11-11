@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int SalaId { get; set; }
+        public string SalaNome { get; set; }
         public string DataAgendamento { get; set; }
         public string HoraInicio { get; set; }
         public string HoraFim { get; set; }
