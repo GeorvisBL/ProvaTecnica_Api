@@ -21,10 +21,7 @@ namespace ProvaTecnica.Controllers
         {
             var retornoAgendamentos = await _agendamentoServices.GetListaAgendamentos();
 
-            if (retornoAgendamentos.Status)
-                return Ok(retornoAgendamentos);
-            else
-                return NotFound(retornoAgendamentos);
+            return Ok(retornoAgendamentos);
         }
 
         [HttpGet("agendamento/{id}")]
@@ -32,10 +29,7 @@ namespace ProvaTecnica.Controllers
         {
             var retornoAgendamento = await _agendamentoServices.GetAgendamentoById(id);
 
-            if (retornoAgendamento.Status)
-                return Ok(retornoAgendamento);
-            else
-                return NotFound(retornoAgendamento);
+            return Ok(retornoAgendamento);
         }
 
 
@@ -46,10 +40,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoAdd = await _agendamentoServices.PostAgendamento(agendamento);
 
-            if (retornoAdd.Status)
-                return Ok(retornoAdd);
-            else
-                return BadRequest(retornoAdd);
+            return Ok(retornoAdd);
         }
 
         [HttpPut("atualizar/{id}")]
@@ -59,10 +50,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoUpdate = await _agendamentoServices.PutAgendamento(id, agendamento);
 
-            if (retornoUpdate.Status)
-                return Ok(retornoUpdate);
-            else
-                return NotFound(retornoUpdate);
+            return Ok(retornoUpdate);
         }
 
         [HttpDelete("eliminar/{id}")]
@@ -72,10 +60,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoRemove = await _agendamentoServices.DeleteAgendamento(id);
 
-            if (retornoRemove.Status)
-                return Ok(retornoRemove);
-            else
-                return NotFound(retornoRemove);
+            return Ok(retornoRemove);
         }
 
     }

@@ -56,7 +56,8 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Dados do agendamento não foram informados."
+                    Msg = "Erro: Dados do agendamento não foram informados.",
+                    Data = null
                 };
             }
 
@@ -66,7 +67,8 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Nenhuma sala encontrada com o ID informado."
+                    Msg = "Erro: Nenhuma sala encontrada com o ID informado.",
+                    Data = null
                 };
             }
 
@@ -79,7 +81,8 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "A hora de término deve ser posterior à hora de início do agendamento."
+                    Msg = "A hora de término deve ser posterior à hora de início do agendamento.",
+                    Data = null
                 };
             }
 
@@ -91,7 +94,17 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Já existe uma reserva para esta sala neste horário. Por favor, escolha outro horário ou verifique a agenda disponível."
+                    Msg = "Já existe uma reserva para esta sala neste horário. Por favor, escolha outro horário ou verifique a agenda disponível.",
+                    Data = null
+                };
+            }
+            else if (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || horaInicio < TimeOnly.FromDateTime(DateTime.Now))
+            {
+                return new ResponseViewModel<string>
+                {
+                    Status = false,
+                    Msg = "Dados invalidos!",
+                    Data = null
                 };
             }
 
@@ -114,7 +127,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados do agendamento cadastrado com sucesso!" : "Erro ao cadastrar os dados do agendamento."
+                Msg = sucesso ? "Dados do agendamento cadastrado com sucesso!" : "Erro ao cadastrar os dados do agendamento.",
+                Data = null
             };
         }
 
@@ -127,7 +141,8 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID"
+                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID",
+                    Data = null
                 };
             }
 
@@ -141,7 +156,17 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Já existe uma reserva para esta sala neste horário. Por favor, escolha outro horário ou verifique a agenda disponível."
+                    Msg = "Já existe uma reserva para esta sala neste horário. Por favor, escolha outro horário ou verifique a agenda disponível.",
+                    Data = null
+                };
+            }
+            else if(dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || horaInicio < TimeOnly.FromDateTime(DateTime.Now))
+            {
+                return new ResponseViewModel<string>
+                {
+                    Status = false,
+                    Msg = "Dados invalidos!",
+                    Data = null
                 };
             }
 
@@ -161,7 +186,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados do agendamento atualizados com sucesso!" : "Erro ao atualizar os dados do agendamento."
+                Msg = sucesso ? "Dados do agendamento atualizados com sucesso!" : "Erro ao atualizar os dados do agendamento.",
+                Data = null
             };
         }
 
@@ -173,7 +199,8 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID"
+                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID",
+                    Data = null
                 };
             }
 
@@ -183,7 +210,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados do agendamento eliminados com sucesso!" : "Erro ao eliminar os dados da agendamento."
+                Msg = sucesso ? "Dados do agendamento eliminados com sucesso!" : "Erro ao eliminar os dados do agendamento.",
+                Data = null
             };
         }
     }

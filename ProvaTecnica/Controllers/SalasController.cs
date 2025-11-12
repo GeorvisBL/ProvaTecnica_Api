@@ -23,10 +23,7 @@ namespace ProvaTecnica.Controllers
         {
             var retornoSalas = await _salaServices.GetListaSalas();
 
-            if (retornoSalas.Status)
-                return Ok(retornoSalas);
-            else
-                return NotFound(retornoSalas);
+            return Ok(retornoSalas);
         }
 
         [HttpGet("sala/{id}")]
@@ -34,10 +31,7 @@ namespace ProvaTecnica.Controllers
         {
             var retornoSala = await _salaServices.GetSalaById(id);
 
-            if (retornoSala.Status)
-                return Ok(retornoSala);
-            else
-                return NotFound(retornoSala);
+            return Ok(retornoSala);
         }
 
 
@@ -48,10 +42,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoAdd = await _salaServices.PostSala(sala);
 
-            if (retornoAdd.Status)
-                return Ok(retornoAdd);
-            else
-                return BadRequest(retornoAdd);
+            return Ok(retornoAdd);
         }
 
         [HttpPut("atualizar/{id}")]
@@ -61,10 +52,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoUpdate = await _salaServices.PutSala(id, sala);
 
-            if (retornoUpdate.Status)
-                return Ok(retornoUpdate);
-            else
-                return NotFound(retornoUpdate);
+            return Ok(retornoUpdate);
         }
 
         [HttpDelete("eliminar/{id}")]
@@ -74,10 +62,7 @@ namespace ProvaTecnica.Controllers
 
             var retornoRemove = await _salaServices.DeleteSala(id);
 
-            if (retornoRemove.Status)
-                return Ok(retornoRemove);
-            else
-                return NotFound(retornoRemove);
+            return Ok(retornoRemove);
         }
 
 

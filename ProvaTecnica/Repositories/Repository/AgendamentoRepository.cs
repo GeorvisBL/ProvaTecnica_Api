@@ -22,6 +22,7 @@ namespace ProvaTecnica.Repositories.Repository
                 .Select(a => new AgendamentoDto
                 {
                     Id = a.Id,
+                    Local = a.Sala.Local,
                     SalaId = a.SalaId,
                     SalaNome = a.Sala.Nome,
                     DataAgendamento = a.DataAgendamento.ToString("dd/MM/yyyy"),
@@ -46,6 +47,7 @@ namespace ProvaTecnica.Repositories.Repository
                 .Select(a => new AgendamentoDto
                 {
                     Id = a.Id,
+                    Local = a.Sala.Local,
                     SalaId = a.SalaId,
                     SalaNome = a.Sala.Nome,
                     DataAgendamento = a.DataAgendamento.ToString("dd/MM/yyyy"),

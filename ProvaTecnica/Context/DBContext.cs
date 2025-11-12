@@ -50,6 +50,7 @@ namespace ProvaTecnica.Context
                 entity.ToTable("Sala");
                 entity.HasKey(e => e.Id).HasName("PK_Sala");
 
+                entity.Property(e => e.Local).HasMaxLength(100).IsRequired();
                 entity.Property(e => e.Nome).HasMaxLength(100).IsRequired();
                 entity.Property(e => e.Ativo).HasDefaultValue(true).IsRequired();
 

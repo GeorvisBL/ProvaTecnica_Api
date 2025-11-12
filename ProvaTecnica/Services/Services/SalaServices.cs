@@ -58,13 +58,15 @@ namespace ProvaTecnica.Services.Services
                     return new ResponseViewModel<string>
                     {
                         Status = false,
-                        Msg = "Já existe uma sala cadastrada com esse nome."
+                        Msg = "Já existe uma sala cadastrada com esse nome.",
+                        Data = null
                     };
                 }
 
                 var novaSala = new Sala
                 {
                     Nome = sala.Nome,
+                    Local = sala.Local,
                     Ativo = true,
                 };
 
@@ -75,7 +77,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados da sala cadastrado com sucesso!" : "Erro ao cadastrar os dados da sala."
+                Msg = sucesso ? "Dados da sala cadastrado com sucesso!" : "Erro ao cadastrar os dados da sala.",
+                Data = null
             };
         }
 
@@ -87,11 +90,13 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID"
+                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID",
+                    Data = null
                 };
             }
 
             responseSala.Nome = sala.Nome;
+            responseSala.Local = sala.Local;
             responseSala.Ativo = sala.Ativo;
             responseSala.DataAtualizacao = DateTime.Now;
 
@@ -101,7 +106,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados da sala atualizados com sucesso!" : "Erro ao atualizar os dados da sala."
+                Msg = sucesso ? "Dados da sala atualizados com sucesso!" : "Erro ao atualizar os dados da sala.",
+                Data = null
             };
         }
 
@@ -113,7 +119,18 @@ namespace ProvaTecnica.Services.Services
                 return new ResponseViewModel<string>
                 {
                     Status = false,
-                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID"
+                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID",
+                    Data = null
+                };
+            }
+            var responseSalaComAgendamento = await _salaRepository.GetSalaAgendamentoById(id);
+            if (responseSalaComAgendamento != null)
+            {
+                return new ResponseViewModel<string>
+                {
+                    Status = false,
+                    Msg = "Erro: Existem agendamentos marcados para essa sala",
+                    Data = null
                 };
             }
 
@@ -123,7 +140,8 @@ namespace ProvaTecnica.Services.Services
             return new ResponseViewModel<string>
             {
                 Status = sucesso,
-                Msg = sucesso ? "Dados da sala eliminados com sucesso!" : "Erro ao eliminar os dados da sala."
+                Msg = sucesso ? "Dados da sala eliminados com sucesso!" : "Erro ao eliminar os dados da sala.",
+                Data = null
             };
         }
 
