@@ -63,17 +63,6 @@ namespace ProvaTecnica.Repositories.Repository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Sala?> GetSalaAgendamentoById(int id)
-        {
-            var dataAtual = DateOnly.FromDateTime(DateTime.Now);
-            var horaAtual = TimeOnly.FromDateTime(DateTime.Now);
-
-            var response =  await _context.Salas
-                .Include(s => s.Agendamentos)
-                .Where(s => s.Id == id && s.Agendamentos.Any(x => x.DataAgendamento >= dataAtual && x.HoraInicio > horaAtual))
-                .FirstOrDefaultAsync();
-            return response;
-        }
 
 
         public void AddSala(Sala sala)
@@ -86,10 +75,6 @@ namespace ProvaTecnica.Repositories.Repository
             _context.Salas.Update(sala);
         }
 
-        public void DeleteSala(Sala sala)
-        {
-            _context.Salas.Remove(sala);
-        }
            
         public async Task<bool> SaveChangesAsync()
         {

@@ -11,6 +11,5 @@ namespace ProvaTecnica.Services.Interfaces
 
         Task<ResponseViewModel<string>> PostSala(SalaInputModel sala);
         Task<ResponseViewModel<string>> PutSala(int id, SalaInputModel sala);
-        Task<ResponseViewModel<string>> DeleteSala(int id);
     }
 }

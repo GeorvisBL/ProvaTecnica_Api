@@ -74,7 +74,7 @@ namespace ProvaTecnica.Repositories.Repository
         public async Task<Agendamento?> GetAgendamentoExistente(int salaId, DateOnly dataAgendamento, TimeOnly horaInicio, TimeOnly horaFim)
         {
             var response = await _context.Agendamentos
-                .Where(a => a.SalaId != salaId &&
+                .Where(a => a.SalaId == salaId &&
                     a.DataAgendamento == dataAgendamento &&
                     a.HoraInicio < horaFim &&
                     a.HoraFim > horaInicio)

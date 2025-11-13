@@ -111,39 +111,6 @@ namespace ProvaTecnica.Services.Services
             };
         }
 
-        public async Task<ResponseViewModel<string>> DeleteSala(int id)
-        {
-            var responseSala = await _salaRepository.GetSalaById(id);
-            if (responseSala == null)
-            {
-                return new ResponseViewModel<string>
-                {
-                    Status = false,
-                    Msg = "Erro: Não foi encontrado nenhum registro com esse ID",
-                    Data = null
-                };
-            }
-            var responseSalaComAgendamento = await _salaRepository.GetSalaAgendamentoById(id);
-            if (responseSalaComAgendamento != null)
-            {
-                return new ResponseViewModel<string>
-                {
-                    Status = false,
-                    Msg = "Erro: Existem agendamentos marcados para essa sala",
-                    Data = null
-                };
-            }
-
-            _salaRepository.DeleteSala(responseSala);
-            var sucesso = await _salaRepository.SaveChangesAsync();
-
-            return new ResponseViewModel<string>
-            {
-                Status = sucesso,
-                Msg = sucesso ? "Dados da sala eliminados com sucesso!" : "Erro ao eliminar os dados da sala.",
-                Data = null
-            };
-        }
 
     }
 }

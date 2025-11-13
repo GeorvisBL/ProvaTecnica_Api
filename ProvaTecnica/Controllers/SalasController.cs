@@ -55,16 +55,6 @@ namespace ProvaTecnica.Controllers
             return Ok(retornoUpdate);
         }
 
-        [HttpDelete("eliminar/{id}")]
-        public async Task<IActionResult> SalaEliminar(int id)
-        {
-            if (id <= 0) return BadRequest("Código inválido!");
-
-            var retornoRemove = await _salaServices.DeleteSala(id);
-
-            return Ok(retornoRemove);
-        }
-
 
     }
 }

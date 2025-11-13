@@ -98,7 +98,7 @@ namespace ProvaTecnica.Services.Services
                     Data = null
                 };
             }
-            else if (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || horaInicio < TimeOnly.FromDateTime(DateTime.Now))
+            else if (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) && horaInicio < TimeOnly.FromDateTime(DateTime.Now))) 
             {
                 return new ResponseViewModel<string>
                 {
@@ -150,6 +150,16 @@ namespace ProvaTecnica.Services.Services
             TimeOnly.TryParseExact(agendamento.HoraInicio, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var horaInicio);
             TimeOnly.TryParseExact(agendamento.HoraFim, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var horaFim);
 
+            if (horaFim <= horaInicio)
+            {
+                return new ResponseViewModel<string>
+                {
+                    Status = false,
+                    Msg = "A hora de término deve ser posterior à hora de início do agendamento.",
+                    Data = null
+                };
+            }
+
             var responseAgendamentoExist = await _agendamentoRepository.GetAgendamentoExistente(agendamento.SalaId, dataAgendamento, horaInicio, horaFim);
             if (responseAgendamentoExist != null)
             {
@@ -160,7 +170,7 @@ namespace ProvaTecnica.Services.Services
                     Data = null
                 };
             }
-            else if(dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || horaInicio < TimeOnly.FromDateTime(DateTime.Now))
+            else if (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) || (dataAgendamento < DateOnly.FromDateTime(DateTime.Now) && horaInicio < TimeOnly.FromDateTime(DateTime.Now)))
             {
                 return new ResponseViewModel<string>
                 {
